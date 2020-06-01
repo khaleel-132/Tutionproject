@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+</style>
+
+<body>
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <style>
+    #btn1 {
+      margin-left: 250px;
+      margin-top: 10px;
+    }
+
+    h2 {
+      margin-top: 10px;
+    }
+
+    #box {
+      height: 750x;
+      background-color: white;
+      /* margin-top: 100px; */
+      border-radius: 3%;
+
+    }
+
+    #head {
+      margin-top: 80px;
+      padding-left: 80px;
+    }
+
+    #profile {
+      margin-top: 10px;
+    }
+
+    #formtext {
+      color: black;
+      font-size: 20px;
+
+    }
+
+    #form {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
+    #btn {
+      margin-left: 150px;
+    }
+
+    #h3 {
+      color: darkblue;
+      font-size: 30px;
+      font-weight: bolder;
+    }
+
+    #checkbox {
+      margin-left: 70px;
+    }
+  </style>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Tution Guru</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <a href="{% url 'login' %}"> <button class="btn btn-outline-success my-2 my-sm-0"
+            type="submit">Login</button></a>
+    </div>
+  </nav>
+  <br>
+  <br>
+  <br>
+
+  <div class="row">
+    <div class="col-md-4 offset-4" id="box">
+      {% for message in messages %}
+      <div class="alert alert-secondary" role="alert">
+        {{message}}
+      </div>
+      {% endfor %}
+      <div class="col-md-4 offset-4">
+        <img src="{% static 'images/profile.png' %}" alt="" width="100px" height="100px" id="profile">
+      </div>
+      <form id="form" action="signup" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="exampleInputEmail1" id="formtext">Firstname</label>
+          <input type="text" name="firstname" class="form-control" id="fistname" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1" id="formtext">Lastname</label>
+          <input type="text" name="lastname" class="form-control" id="lastname">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1" id="formtext">Username</label>
+          <input type="text" name="username" class="form-control" id="lastname">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1" id="formtext">Email address</label>
+          <input type="email" name="email" class="form-control" id="email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1" id="formtext">Password</label>
+          <input type="password" name="password1" class="form-control" id="pwd">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1" id="formtext">Confirm Password</label>
+          <input type="password" name="password2" class="form-control" id="pwd">
+        </div>
+        <!-- <div class="form-group">
+          <label for="exampleInputPassword1" id="formtext">Date of Birth</label>
+          <input type="date" name="dob" class="form-control" id="dob">
+        </div>
+        <div class="form-group">
+          <input type="radio" name="role" id="role" value="tutor">&nbsp;&nbsp;&nbsp;
+          <label for="" id="formtext">Iam a
+            Tutor</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="radio" name="role" id="role" value="student">&nbsp;&nbsp;&nbsp;
+          <label for="" id="formtext">Iam a Student</label>
+        </div>
+        <div class="form-group">
+          <input type="radio" name="gender" id="gndr" value="male">&nbsp;&nbsp;&nbsp;
+          <label for="" id="formtext">Male</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="radio" name="gender" id="gndr" value="female">&nbsp;&nbsp;&nbsp;
+          <label for="" id="formtext">Female</label>
+        </div> -->
+
+        <button style="margin-left: 120px;" type="submit" class="btn btn-success btn-lg" id="btnvalidate">Sign
+          Up</button>
+      </form>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- cdn -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</body>
+
+</html>
